@@ -1,0 +1,15 @@
+Dates = VAR BaseCalendar = CALENDARAUTO (12)
+RETURN 
+ GENERATE(
+  BaseCalendar,
+    VAR BaseDate = [Date]
+    VAR YearDate = YEAR(BaseDate)
+    VAR MonthNumber = MONTH(BaseDate)
+    RETURN ROW(
+    "Day", BaseDate,
+    "Year", YearDate,
+    "MonthNumber", MonthNumber,
+    "Month", FORMAT (BaseDate, "mmmm"),
+    "Month Year", FORMAT(BaseDate, "mmm yyyy")
+    )
+ )
