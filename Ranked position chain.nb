@@ -1,0 +1,10 @@
+rankList =
+  Import["ranklist1", {"Dataset", "ranklist"},
+   "HeaderLines" -> 1];
+	normalRanklist = Normal@rankList[All, "ranklist"];
+		transP = Transpose [{Most[normalRanklist], Rest[normalRanklist]}];
+			flatRanklist = Flatten[List[#[[1]] -> #[[2]]] & /@ transP];
+				rankGraph =
+  Graph[flatRanklist, VertexLabels -> Placed["Name", Center],
+   EdgeLabels -> Placed["IS_ABOVE", Center]];
+Print[rankGraph]
